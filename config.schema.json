@@ -6,10 +6,10 @@
 		"type": "object",
 		"properties": {
 			"name": {
-				"title": "Name",
+				"title": "There are no settings to configure. Simply unlock the Smart Hub in the app and it should be discovered.",
 				"type": "string",
 				"required": true,
-				"default": "Example Dynamic Platform"
+				"default": "There are no settings to configure. Simply unlock the Smart Hub in the app and it should be discovered."
 			}
 		}
 	}

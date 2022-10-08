@@ -4,5 +4,9 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"prettier.tabWidth": 2,
+		"prettier.useTabs": false,
+		"prettier.trailingComma": "all"
+	}
 }

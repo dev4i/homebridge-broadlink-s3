@@ -1,5 +1,5 @@
 {
-	"private": true,
+	"private": false,
 	"displayName": "Broadlink S3 Hub",
 	"name": "homebridge-broadlink-s3",
 	"version": "1.0.0",
@@ -23,9 +23,7 @@
 		"build": "rimraf ./dist && tsc",
 		"prepublishOnly": "npm run lint && npm run build"
 	},
-	"keywords": [
-		"homebridge-plugin"
-	],
+	"keywords": [ "homebridge-plugin" ],
 	"dependencies": {},
 	"devDependencies": {
 		"@types/node": "^16.10.9",
