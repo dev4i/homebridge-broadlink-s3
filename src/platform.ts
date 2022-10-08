@@ -17,7 +17,7 @@ import child_process = require('child_process');
 /**
  * HomebridgePlatform
  * This class is the main constructor for your plugin, this is where you should
- * parse the user config and discover/register accessories with Homebridge. 
+ * parse the user config and discover/register accessories with Homebridge.
  */
 export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
   public readonly Service: typeof Service = this.api.hap.Service;
