@@ -1,16 +1,16 @@
 {
-	"pluginAlias": "Broadlink",
-	"pluginType": "platform",
-	"singular": true,
-	"schema": {
-		"type": "object",
-		"properties": {
-			"name": {
-				"title": "There are no settings to configure. Simply unlock the Smart Hub in the app and it should be discovered.",
-				"type": "string",
-				"required": true,
-				"default": "There are no settings to configure. Simply unlock the Smart Hub in the app and it should be discovered."
-			}
-		}
-	}
+  "pluginAlias": "Broadlink",
+  "pluginType": "platform",
+  "singular": true,
+  "schema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "title": "Name",
+        "type": "string",
+        "required": true,
+        "default": "Broadlink S3 Hub Platform."
+      }
+    }
+  }
 }
