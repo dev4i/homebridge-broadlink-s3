@@ -68,7 +68,7 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
     // this.api.unregisterPlatformAccessories(PLUGIN_NAME, PLATFORM_NAME, [existingAccessory]);
     // this.log.info('Removing existing accessory from cache:', existingAccessory.displayName);
 
-    const pythonProcess = child_process.spawn('python3', [ 'python/get-all-subdevices.py' ], {
+    const pythonProcess = child_process.spawn('python3', [ 'broadlink-s3-python/get-all-subdevices.py' ], {
       shell: true,
     });
 

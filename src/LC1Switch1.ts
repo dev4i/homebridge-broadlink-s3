@@ -67,7 +67,7 @@ export class LC1Switch1 {
     const pythonProcess = child_process.spawn(
       'python3',
       [
-        'python/set-device-state.py',
+        'broadlink-s3-python/set-device-state.py',
         this.accessory.context.device.host,
         this.accessory.context.device.uniqueId,
         intValue,
@@ -109,7 +109,7 @@ export class LC1Switch1 {
     const pythonProcess = child_process.spawn(
       'python3',
       [
-        'python/get-device-state.py',
+        'broadlink-s3-python/get-device-state.py',
         this.accessory.context.device.host,
         this.accessory.context.device.uniqueId,
         'pwr1',
