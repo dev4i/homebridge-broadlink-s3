@@ -67,7 +67,7 @@ export class LC1Switch1 {
     const pythonProcess = child_process.spawn(
       'python3',
       [
-        'src/set-device-state.py',
+        'python/set-device-state.py',
         this.accessory.context.device.host,
         this.accessory.context.device.uniqueId,
         intValue,
@@ -108,7 +108,12 @@ export class LC1Switch1 {
 
     const pythonProcess = child_process.spawn(
       'python3',
-      [ 'src/get-device-state.py', this.accessory.context.device.host, this.accessory.context.device.uniqueId, 'pwr1' ],
+      [
+        'python/get-device-state.py',
+        this.accessory.context.device.host,
+        this.accessory.context.device.uniqueId,
+        'pwr1',
+      ],
       { shell: false },
     );
 
