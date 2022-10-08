@@ -22,13 +22,11 @@
     "watch": "npm run build && npm link && nodemon",
     "build": "rimraf ./dist && tsc",
     "prepublishOnly": "npm run lint && npm run build",
-    "install": "scripts/install.sh",
+    "install": "echo '$SHELL'",
     "postinstall": "scripts/install.sh",
     "uninstall": "scripts/uninstall.sh"
   },
-  "keywords": [
-    "homebridge-plugin"
-  ],
+  "keywords": [ "homebridge-plugin" ],
   "dependencies": {},
   "devDependencies": {
     "@types/node": "^16.10.9",
