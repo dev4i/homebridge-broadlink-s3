@@ -13,12 +13,11 @@ import { LC1Switch3 } from './LC1Switch3';
 import { LC1Switch2 } from './LC1Switch2';
 import { LC1Switch1 } from './LC1Switch1';
 import child_process = require('child_process');
-import path = require('path');
 
 /**
  * HomebridgePlatform
  * This class is the main constructor for your plugin, this is where you should
- * parse the user config and discover/register accessories with Homebridge.
+ * parse the user config and discover/register accessories with Homebridge. 
  */
 export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
   public readonly Service: typeof Service = this.api.hap.Service;
@@ -69,13 +68,8 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
     // this.api.unregisterPlatformAccessories(PLUGIN_NAME, PLATFORM_NAME, [existingAccessory]);
     // this.log.info('Removing existing accessory from cache:', existingAccessory.displayName);
 
-    // const nwDir = path.dirname(process.execPath);
-    // this.log.info(JSON.stringify(process.env, null, 2));
-    // console.log(process);
-    // this.log.info(nwDir);
-
     const pythonProcess = child_process.spawn('python3', [ 'python/get-all-subdevices.py' ], {
-      shell: false,
+      shell: true,
     });
 
     pythonProcess.stdout.on('data', (data) => {

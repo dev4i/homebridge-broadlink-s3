@@ -12,13 +12,13 @@
     "declarationMap": true,
     "sourceMap": true,
     "outDir": "./dist",
-    "rootDir": "./",
+    "rootDir": "./src",
     "strict": true,
     "esModuleInterop": true,
     "noImplicitAny": false
   },
   "include": [
-    "src/","python/"
+    "src/"
   ],
   "exclude": [
     "**/*.spec.ts"

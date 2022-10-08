@@ -73,7 +73,7 @@ export class LC1Switch1 {
         intValue,
         'pwr1',
       ],
-      { shell: false },
+      { shell: true },
     );
 
     pythonProcess.stdout.on('data', (data) => {
@@ -114,7 +114,7 @@ export class LC1Switch1 {
         this.accessory.context.device.uniqueId,
         'pwr1',
       ],
-      { shell: false },
+      { shell: true },
     );
 
     return await new Promise((resolve) => {

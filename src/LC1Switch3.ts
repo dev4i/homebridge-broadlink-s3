@@ -98,7 +98,7 @@ export class LC1Switch3 {
         intValue,
         'pwr1',
       ],
-      { shell: false },
+      { shell: true },
     );
 
     pythonProcess.stdout.on('data', (data) => {
@@ -128,7 +128,7 @@ export class LC1Switch3 {
         intValue,
         'pwr2',
       ],
-      { shell: false },
+      { shell: true },
     );
 
     pythonProcess.stdout.on('data', (data) => {
@@ -158,7 +158,7 @@ export class LC1Switch3 {
         intValue,
         'pwr3',
       ],
-      { shell: false },
+      { shell: true },
     );
 
     pythonProcess.stdout.on('data', (data) => {
@@ -193,8 +193,13 @@ export class LC1Switch3 {
 
     const pythonProcess = child_process.spawn(
       'python3',
-      [ 'python/get-device-state.py', this.accessory.context.device.host, this.accessory.context.device.uniqueId, 'pwr1' ],
-      { shell: false },
+      [
+        'python/get-device-state.py',
+        this.accessory.context.device.host,
+        this.accessory.context.device.uniqueId,
+        'pwr1',
+      ],
+      { shell: true },
     );
 
     return await new Promise((resolve) => {
@@ -225,8 +230,13 @@ export class LC1Switch3 {
 
     const pythonProcess = child_process.spawn(
       'python3',
-      [ 'python/get-device-state.py', this.accessory.context.device.host, this.accessory.context.device.uniqueId, 'pwr2' ],
-      { shell: false },
+      [
+        'python/get-device-state.py',
+        this.accessory.context.device.host,
+        this.accessory.context.device.uniqueId,
+        'pwr2',
+      ],
+      { shell: true },
     );
 
     return await new Promise((resolve) => {
@@ -257,8 +267,13 @@ export class LC1Switch3 {
 
     const pythonProcess = child_process.spawn(
       'python3',
-      [ 'python/get-device-state.py', this.accessory.context.device.host, this.accessory.context.device.uniqueId, 'pwr3' ],
-      { shell: false },
+      [
+        'python/get-device-state.py',
+        this.accessory.context.device.host,
+        this.accessory.context.device.uniqueId,
+        'pwr3',
+      ],
+      { shell: true },
     );
 
     return await new Promise((resolve) => {
