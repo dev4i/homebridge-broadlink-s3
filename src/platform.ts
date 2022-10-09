@@ -59,8 +59,8 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
   discoverDevices() {
     // Remove all accessories function
     // this.accessories.map((acc) => {
-    // 	this.api.unregisterPlatformAccessories(PLUGIN_NAME, PLATFORM_NAME, [ acc ]);
-    // 	this.log.info('Removing existing accessory from cache:', acc.displayName);
+    //   this.api.unregisterPlatformAccessories(PLUGIN_NAME, PLATFORM_NAME, [ acc ]);
+    //   this.log.info('Removing existing accessory from cache:', acc.displayName);
     // });
 
     // it is possible to remove platform accessories at any time using `api.unregisterPlatformAccessories`, eg.:
@@ -79,6 +79,8 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
       const allSubdevices = JSON.parse(data.toString()).map((dev) => {
         return { uniqueId: dev.did, deviceName: dev.name, host: dev.host, status: dev.status };
       });
+
+      let deviceIndex = 0;
 
       // loop over the discovered devices and register each one if it has not already been registered
       for (const device of allSubdevices) {
@@ -131,7 +133,7 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
 
             if (device.status.pwr1 !== void 0 && device.status.pwr2 !== void 0 && device.status.pwr3 !== void 0) {
               //This is the three gang switch
-              accessory = new this.api.platformAccessory('LC1 Switch 3 Gang', uuid);
+              accessory = new this.api.platformAccessory(deviceIndex + '_LC1 Switch 3 Gang', uuid);
               accessory.context.device = device;
               new LC1Switch3(this, accessory);
             } else if (
@@ -140,7 +142,7 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
               device.status.pwr3 === void 0
             ) {
               //This is the two gang switch
-              accessory = new this.api.platformAccessory('LC1 Switch 2 Gang', uuid);
+              accessory = new this.api.platformAccessory(deviceIndex + '_LC1 Switch 2 Gang', uuid);
               accessory.context.device = device;
               new LC1Switch2(this, accessory);
             } else if (
@@ -149,10 +151,12 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
               device.status.pwr3 === void 0
             ) {
               //This is the one gang switch
-              accessory = new this.api.platformAccessory('LC1 Switch 1 Gang', uuid);
+              accessory = new this.api.platformAccessory(deviceIndex + '_LC1 Switch 1 Gang', uuid);
               accessory.context.device = device;
               new LC1Switch1(this, accessory);
             }
+
+            deviceIndex++;
 
             // link the accessory to your platform
             this.api.registerPlatformAccessories(PLUGIN_NAME, PLATFORM_NAME, [ accessory ]);

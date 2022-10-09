@@ -24,18 +24,20 @@ export class LC1Switch3 {
   constructor(private readonly platform: ExampleHomebridgePlatform, private readonly accessory: PlatformAccessory) {
     // set accessory information
     this.accessory.getService(this.platform.Service.AccessoryInformation)!
-      .setCharacteristic(this.platform.Characteristic.Manufacturer, 'Default-Manufacturer')
-      .setCharacteristic(this.platform.Characteristic.Model, 'Default-Model')
-      .setCharacteristic(this.platform.Characteristic.SerialNumber, 'Default-Serial');
+      .setCharacteristic(this.platform.Characteristic.Manufacturer, 'Broadlink')
+      .setCharacteristic(this.platform.Characteristic.Model, 'LC1 3 Gang')
+      .setCharacteristic(this.platform.Characteristic.SerialNumber, this.accessory.context.device.uniqueId);
 
     // get the Switch service if it exists, otherwise create a new Switch service
     // you can create multiple services for each accessory
     this.serviceSwitchOne =
       this.accessory.getService('Switch One') ||
-      this.accessory.addService(this.platform.Service.Switch, 'Switch One', this.accessory.context.device.did + '-1');
+      this.accessory.addService(
+        this.platform.Service.Switch,
+        'Switch One',
+        this.platform.api.hap.uuid.generate(this.accessory.context.device.uniqueId + '-1'),
+      );
 
-    // set the service name, this is what is displayed as the default name on the Home app
-    // in this example we are using the name we stored in the `accessory.context` in the `discoverDevices` method.
     this.serviceSwitchOne.setCharacteristic(this.platform.Characteristic.Name, 'Switch One');
 
     // each service must implement at-minimum the "required characteristics" for the given service type
@@ -49,7 +51,11 @@ export class LC1Switch3 {
 
     this.serviceSwitchTwo =
       this.accessory.getService('Switch Two') ||
-      this.accessory.addService(this.platform.Service.Switch, 'Switch Two', this.accessory.context.device.did + '-2');
+      this.accessory.addService(
+        this.platform.Service.Switch,
+        'Switch Two',
+        this.platform.api.hap.uuid.generate(this.accessory.context.device.uniqueId + '-2'),
+      );
 
     this.serviceSwitchTwo.setCharacteristic(this.platform.Characteristic.Name, 'Switch Two');
 
@@ -60,7 +66,11 @@ export class LC1Switch3 {
 
     this.serviceSwitchThree =
       this.accessory.getService('Switch Three') ||
-      this.accessory.addService(this.platform.Service.Switch, 'Switch Three', this.accessory.context.device.did + '-3');
+      this.accessory.addService(
+        this.platform.Service.Switch,
+        'Switch Three',
+        this.platform.api.hap.uuid.generate(this.accessory.context.device.uniqueId + '-3'),
+      );
 
     this.serviceSwitchThree.setCharacteristic(this.platform.Characteristic.Name, 'Switch Three');
 
