@@ -123,6 +123,9 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
               //This is the one gang switch
               new LC1Switch1(this, existingAccessory);
             }
+          } else {
+            this.log.error('Device not recognised:');
+            this.log.error(device);
           }
         } else {
           //I think LC1 Switches are called simpfc_cli?
@@ -160,6 +163,9 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
 
             // link the accessory to your platform
             this.api.registerPlatformAccessories(PLUGIN_NAME, PLATFORM_NAME, [ accessory ]);
+          } else {
+            this.log.error('Device not recognised:');
+            this.log.error(device);
           }
         }
       }
