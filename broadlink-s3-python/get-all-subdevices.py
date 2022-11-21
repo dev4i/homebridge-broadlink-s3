@@ -5,7 +5,7 @@ import json;
 devices = broadlink.discover();
 listOfDeviceIds = [];
 for device in devices:
-    if type(devices[0]).__name__ == 's3':
+    if type(device).__name__ == 's3':
         device.auth()
         for subdevice in device.get_subdevices():
             subdevice['host'] = device.host

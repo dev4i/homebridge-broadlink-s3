@@ -68,7 +68,7 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
     // this.api.unregisterPlatformAccessories(PLUGIN_NAME, PLATFORM_NAME, [existingAccessory]);
     // this.log.info('Removing existing accessory from cache:', existingAccessory.displayName);
 
-    const pythonProcess = child_process.spawn('python3', [ 'broadlink-s3-python/get-all-subdevices.py' ], {
+    const pythonProcess = child_process.spawn('python3', ['broadlink-s3-python/get-all-subdevices.py'], {
       shell: true,
     });
 
@@ -131,7 +131,8 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
           //I think LC1 Switches are called simpfc_cli?
           if (device.deviceName === 'simpfc_cli') {
             // the accessory does not yet exist, so we need to create it
-            this.log.info('Adding new accessory:', device.deviceName);
+            this.log.info('Adding new accessory: ', device.deviceName);
+            this.log.info('accessory: ', JSON.stringify(device));
             let accessory;
 
             if (device.status.pwr1 !== void 0 && device.status.pwr2 !== void 0 && device.status.pwr3 !== void 0) {
@@ -162,7 +163,12 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
             deviceIndex++;
 
             // link the accessory to your platform
-            this.api.registerPlatformAccessories(PLUGIN_NAME, PLATFORM_NAME, [ accessory ]);
+            if (accessory !== void 0) {
+              this.log.error('The type of device was not detectable');
+              this.log.error(JSON.stringify(device));
+            } else {
+              this.api.registerPlatformAccessories(PLUGIN_NAME, PLATFORM_NAME, [accessory]);
+            }
           } else {
             this.log.error('Device not recognised:');
             this.log.error(device);
