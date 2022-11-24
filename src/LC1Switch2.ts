@@ -170,7 +170,7 @@ export class LC1Switch2 {
 
     return await new Promise((resolve) => {
       pythonProcess.stdout.on('data', (data) => {
-        this.platform.log.info('get on python output:');
+        this.platform.log.debug('Get on python output:');
         const response = data.toString();
         if (response.trim() === '1') {
           this.platform.log.debug('Get Characteristic On ->', true);
@@ -207,7 +207,7 @@ export class LC1Switch2 {
 
     return await new Promise((resolve) => {
       pythonProcess.stdout.on('data', (data) => {
-        this.platform.log.info('get on python output:');
+        this.platform.log.debug('Get on python output:');
         const response = data.toString();
         if (response.trim() === '1') {
           this.platform.log.debug('Get Characteristic On ->', true);
