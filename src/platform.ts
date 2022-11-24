@@ -73,7 +73,7 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
     });
 
     pythonProcess.stdout.on('data', (data) => {
-      this.log.info('Python output:');
+      this.log.info('Get subdevices python output:');
       this.log.info(data.toString());
 
       const allSubdevices = JSON.parse(data.toString()).map((dev) => {

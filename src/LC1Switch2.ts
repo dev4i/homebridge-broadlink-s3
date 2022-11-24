@@ -98,12 +98,12 @@ export class LC1Switch2 {
     );
 
     pythonProcess.stdout.on('data', (data) => {
-      this.platform.log.info('Python output:');
+      this.platform.log.info('Set on python output:');
       this.platform.log.info(data.toString());
     });
 
     pythonProcess.stderr.on('data', (data) => {
-      this.platform.log.error('Python error:');
+      this.platform.log.error('Set on python error:');
       this.platform.log.error(data.toString());
     });
 
@@ -128,12 +128,12 @@ export class LC1Switch2 {
     );
 
     pythonProcess.stdout.on('data', (data) => {
-      this.platform.log.info('Python output:');
+      this.platform.log.info('Set on python output:');
       this.platform.log.info(data.toString());
     });
 
     pythonProcess.stderr.on('data', (data) => {
-      this.platform.log.error('Python error:');
+      this.platform.log.error('Set on python error:');
       this.platform.log.error(data.toString());
     });
 
@@ -170,7 +170,7 @@ export class LC1Switch2 {
 
     return await new Promise((resolve) => {
       pythonProcess.stdout.on('data', (data) => {
-        this.platform.log.info('Python output:');
+        this.platform.log.info('get on python output:');
         const response = data.toString();
         if (response.trim() === '1') {
           this.platform.log.debug('Get Characteristic On ->', true);
@@ -183,7 +183,7 @@ export class LC1Switch2 {
       });
 
       pythonProcess.stderr.on('data', (data) => {
-        this.platform.log.error('Python error:');
+        this.platform.log.error('Get on python error:');
         this.platform.log.error(data.toString());
         throw new this.platform.api.hap.HapStatusError(this.platform.api.hap.HAPStatus.SERVICE_COMMUNICATION_FAILURE);
       });
@@ -207,7 +207,7 @@ export class LC1Switch2 {
 
     return await new Promise((resolve) => {
       pythonProcess.stdout.on('data', (data) => {
-        this.platform.log.info('Python output:');
+        this.platform.log.info('get on python output:');
         const response = data.toString();
         if (response.trim() === '1') {
           this.platform.log.debug('Get Characteristic On ->', true);
@@ -220,7 +220,7 @@ export class LC1Switch2 {
       });
 
       pythonProcess.stderr.on('data', (data) => {
-        this.platform.log.error('Python error:');
+        this.platform.log.error('Get on python error:');
         this.platform.log.error(data.toString());
         throw new this.platform.api.hap.HapStatusError(this.platform.api.hap.HAPStatus.SERVICE_COMMUNICATION_FAILURE);
       });
