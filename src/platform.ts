@@ -38,8 +38,6 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
       // run the method to discover / register your devices as accessories
       this.discoverDevices();
     });
-
-    const state = { rediscover: () => this.discoverDevices() };
   }
 
   /**
