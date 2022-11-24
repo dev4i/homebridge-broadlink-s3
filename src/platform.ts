@@ -38,6 +38,8 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
       // run the method to discover / register your devices as accessories
       this.discoverDevices();
     });
+
+    const state = { rediscover: () => this.discoverDevices() };
   }
 
   /**
@@ -58,10 +60,10 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
    */
   discoverDevices() {
     // Remove all accessories function
-    // this.accessories.map((acc) => {
-    //   this.api.unregisterPlatformAccessories(PLUGIN_NAME, PLATFORM_NAME, [ acc ]);
-    //   this.log.info('Removing existing accessory from cache:', acc.displayName);
-    // });
+    this.accessories.map((acc) => {
+      this.api.unregisterPlatformAccessories(PLUGIN_NAME, PLATFORM_NAME, [acc]);
+      this.log.info('Removing existing accessory from cache:', acc.displayName);
+    });
 
     // it is possible to remove platform accessories at any time using `api.unregisterPlatformAccessories`, eg.:
     // remove platform accessories when no longer present
@@ -163,7 +165,7 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
             deviceIndex++;
 
             // link the accessory to your platform
-            if (accessory !== void 0) {
+            if (accessory === void 0) {
               this.log.error('The type of device was not detectable');
               this.log.error(JSON.stringify(device));
             } else {
@@ -178,8 +180,11 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
     });
 
     pythonProcess.stderr.on('data', (data) => {
-      this.log.error('Python error:');
+      this.log.error('Device Discovery Python Error:');
       this.log.error(data.toString());
+      // setTimeout(() => {
+      //   this.discoverDevices();
+      // }, 5000);
     });
   }
 }

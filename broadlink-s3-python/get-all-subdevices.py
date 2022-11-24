@@ -11,6 +11,5 @@ for device in devices:
             subdevice['host'] = device.host
             subdevice['status'] = device.get_state(did=subdevice['did'])
             listOfDeviceIds.append(subdevice)
-            # print(subdevice);
 print(json.dumps(listOfDeviceIds));
 sys.stdout.flush();
