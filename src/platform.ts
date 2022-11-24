@@ -58,10 +58,10 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
    */
   discoverDevices() {
     // Remove all accessories function
-    this.accessories.map((acc) => {
-      this.api.unregisterPlatformAccessories(PLUGIN_NAME, PLATFORM_NAME, [acc]);
-      this.log.info('Removing existing accessory from cache:', acc.displayName);
-    });
+    // this.accessories.map((acc) => {
+    //   this.api.unregisterPlatformAccessories(PLUGIN_NAME, PLATFORM_NAME, [acc]);
+    //   this.log.info('Removing existing accessory from cache:', acc.displayName);
+    // });
 
     // it is possible to remove platform accessories at any time using `api.unregisterPlatformAccessories`, eg.:
     // remove platform accessories when no longer present
