@@ -168,24 +168,26 @@ export class LC1Switch2 {
       { shell: true },
     );
 
-    return await new Promise((resolve) => {
+    return await new Promise((resolve, reject) => {
       pythonProcess.stdout.on('data', (data) => {
         this.platform.log.debug('Get on python output:');
         const response = data.toString();
         if (response.trim() === '1') {
           this.platform.log.debug('Get Characteristic On ->', true);
           resolve(true);
-        }
-        if (response.trim() === '0') {
+        }else if(response.trim() === '0')
+        {
           this.platform.log.debug('Get Characteristic On ->', false);
           resolve(false);
+        }else{
+          reject(new this.platform.api.hap.HapStatusError(this.platform.api.hap.HAPStatus.SERVICE_COMMUNICATION_FAILURE));
         }
       });
 
       pythonProcess.stderr.on('data', (data) => {
         this.platform.log.error('Get on python error:');
         this.platform.log.error(data.toString());
-        throw new this.platform.api.hap.HapStatusError(this.platform.api.hap.HAPStatus.SERVICE_COMMUNICATION_FAILURE);
+        reject(new this.platform.api.hap.HapStatusError(this.platform.api.hap.HAPStatus.SERVICE_COMMUNICATION_FAILURE));
       });
     });
   }
@@ -205,24 +207,26 @@ export class LC1Switch2 {
       { shell: true },
     );
 
-    return await new Promise((resolve) => {
+    return await new Promise((resolve, reject) => {
       pythonProcess.stdout.on('data', (data) => {
         this.platform.log.debug('Get on python output:');
         const response = data.toString();
         if (response.trim() === '1') {
           this.platform.log.debug('Get Characteristic On ->', true);
           resolve(true);
-        }
-        if (response.trim() === '0') {
+        }else if(response.trim() === '0')
+        {
           this.platform.log.debug('Get Characteristic On ->', false);
           resolve(false);
+        }else{
+          reject(new this.platform.api.hap.HapStatusError(this.platform.api.hap.HAPStatus.SERVICE_COMMUNICATION_FAILURE));
         }
       });
 
       pythonProcess.stderr.on('data', (data) => {
         this.platform.log.error('Get on python error:');
         this.platform.log.error(data.toString());
-        throw new this.platform.api.hap.HapStatusError(this.platform.api.hap.HAPStatus.SERVICE_COMMUNICATION_FAILURE);
+        reject(new this.platform.api.hap.HapStatusError(this.platform.api.hap.HAPStatus.SERVICE_COMMUNICATION_FAILURE));
       });
     });
   }

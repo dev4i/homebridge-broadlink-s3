@@ -36,7 +36,17 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
     this.api.on('didFinishLaunching', () => {
       log.debug('Executed didFinishLaunching callback');
       // run the method to discover / register your devices as accessories
+
       this.discoverDevices();
+      const rediscover = () => {
+        //Rediscovering devices every 5 minutes
+        setTimeout(() => {
+          this.discoverDevices();
+          rediscover();
+        }, 300000);
+      }
+      rediscover();
+
     });
   }
 
@@ -180,9 +190,6 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
     pythonProcess.stderr.on('data', (data) => {
       this.log.error('Device Discovery Python Error:');
       this.log.error(data.toString());
-      // setTimeout(() => {
-      //   this.discoverDevices();
-      // }, 5000);
     });
   }
 }
