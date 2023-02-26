@@ -44,7 +44,7 @@ export class ExampleHomebridgePlatform implements DynamicPlatformPlugin {
           this.discoverDevices();
           rediscover();
         }, 300000);
-      }
+      };
       rediscover();
 
     });
