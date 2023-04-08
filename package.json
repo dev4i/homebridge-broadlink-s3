@@ -2,7 +2,7 @@
   "private": false,
   "displayName": "Broadlink S3 Hub",
   "name": "homebridge-broadlink-s3",
-  "version": "1.1.14",
+  "version": "1.1.15",
   "description": "A short description about what your plugin does.",
   "license": "Apache-2.0",
   "repository": {
