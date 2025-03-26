@@ -1,30 +1,18 @@
 #!/bin/bash
 set -e
 
-# Create directory for your scripts
 mkdir -p /var/lib/homebridge/broadlink-s3-python
 
-# Copy your scripts over
 cp broadlink-s3-python/get-all-subdevices.py /var/lib/homebridge/broadlink-s3-python/get-all-subdevices.py
 cp broadlink-s3-python/get-device-state.py /var/lib/homebridge/broadlink-s3-python/get-device-state.py
 cp broadlink-s3-python/set-device-state.py /var/lib/homebridge/broadlink-s3-python/set-device-state.py
 
-# Set up virtual environment path
-VENV_DIR="/var/lib/homebridge/broadlink-s3-python/venv"
-
-# Create virtual environment if it doesn't exist
-if [ ! -d "$VENV_DIR" ]; then
-    python3 -m venv "$VENV_DIR"
+# Try pip3, fall back to pip, and override Python's externally-managed restriction
+if command -v pip3 &> /dev/null; then
+    PIP_BREAK_SYSTEM_PACKAGES=1 pip3 install --upgrade broadlink
+elif command -v pip &> /dev/null; then
+    PIP_BREAK_SYSTEM_PACKAGES=1 pip install --upgrade broadlink
+else
+    echo "Error: pip or pip3 not found."
+    exit 1
 fi
-
-# Activate the virtual environment
-source "$VENV_DIR/bin/activate"
-
-# Install broadlink inside the virtual environment
-pip install --upgrade pip  # optional, but good practice
-pip install broadlink
-
-# Deactivate the virtual environment
-deactivate
-
-echo "Installation complete"
